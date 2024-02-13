@@ -1,7 +1,9 @@
 import React from 'react';
 
 export const Drawer = () => {
-    return (
+    return (  /* => roba presa da https://daisyui.com/components/drawer/ 
+    funzione serve solo a incapsulare questo componente*/
+    /* => guarda resto del video e vedi come creare i componenti figlio da metterci dentro */
     <div className="App">
     <div className="Drawer">
 <input id="my-drawer" type="checkbox" className="drawer-toggle" />

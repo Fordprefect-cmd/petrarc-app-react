@@ -56,12 +56,21 @@ consonanti_italiane = ['b', 'c', 'd', 'f', 'g', 'h', 'l', 'm', 'n', 'p', 'q', 'r
 @app.route('/')
 
 def index():
-    return "Server is running"  # Non è più necessario rendere una pagina HTML
+    return "Server is running"  # Non è più necessario rendere una pagina HTML se clicchi al link vedi questo
 
 @app.route('/get_tables', methods=['POST'])
 def get_tables():
-    multiline_input = request.form['multiline_input']
-    print('Data received from client:', multiline_input)
+
+    data = request.json
+    multiline_input = data.get('multiline_input', '')
+
+    # Now you can process the text as needed
+    # For demonstration, let's just print it
+    print('Received text:', multiline_input)
+
+
+
+
 
     input_lines = multiline_input.split('\n')
     ajax_responses = []

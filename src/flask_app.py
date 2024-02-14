@@ -7,6 +7,10 @@ Per adesso prendi e ristrottura la data structure con tutto quello che ti servir
 - Ocio monosillabi atoni => hai già assegnato il conto partendo da 1 qui, puoi usare "0" come simbolo per no accento (post UI che funziona)
 - Ocio aggiungi modalità per assonanza eventualmente
 
+- occhio per far andare questo file devi essere dentro la cartella petrarc_app_react/src,
+- metre npm start lo devi fare nella cartella petrarc_app_react
+- + avere attivo entrambi il flask e react servers.
+
 - Fai file doc di corrispondenza/spiegazione valori tabella + funzioni + corrispondenza metrica italiana + UI
 - x doc: di fatto devono trovare/implementare una soluzione al matching con le parole del dizionario
 in generale, questo riassume gli apostrofi, numeri, plurali e singolari che ho già volendo e usare 
@@ -16,10 +20,18 @@ quindi il doc è diviso in 2, la spiegaz della teoria e del python, e la spiegaz
 '''
 
 
-from flask import Flask, render_template, request, jsonify
+
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 import pandas as pd
 import re
 import json
+
+
+app = Flask(__name__)
+CORS(app)  # Configura CORS per il tuo Flask app
+
+
 
 # Importa i dati necessari: un DataFrame con la sillabazione (df_DizionarioItaliano) e una lista di sillabe uniche (df_Sillabe_uniche)
 df_DizionarioItaliano = pd.read_csv('df_cleaned (1).csv')
@@ -40,24 +52,8 @@ italian_vowels_no_acc = ["a", "e", "i", "o", "u"]
 italian_vowels = italian_vowels_acc + italian_vowels_no_acc
 consonanti_italiane = ['b', 'c', 'd', 'f', 'g', 'h', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'z', 'j', 'k', 'w', 'x', 'y']
 
-# Inizializza l'app Flask
-app = Flask(__name__)
-# Rimuovi l'importazione di render_template
-from flask import Flask, request, jsonify
-import json
-
-
-app = Flask(__name__)
-
 
 @app.route('/')
-
-def _build_cors_preflight_response():
-    response = make_response()
-    response.headers.add("Access-Control-Allow-Origin", "*")
-    response.headers.add("Access-Control-Allow-Headers", "*")
-    response.headers.add("Access-Control-Allow-Methods", "*")
-    return response
 
 def index():
     return "Server is running"  # Non è più necessario rendere una pagina HTML
@@ -65,6 +61,8 @@ def index():
 @app.route('/get_tables', methods=['POST'])
 def get_tables():
     multiline_input = request.form['multiline_input']
+    print('Data received from client:', multiline_input)
+
     input_lines = multiline_input.split('\n')
     ajax_responses = []
 
@@ -85,8 +83,7 @@ def get_tables():
             })
 
    
-    response = jsonify({'ajaxResponses': ajax_responses}, )
-    response.headers.add("Access-Control-Allow-Origin", "*")
+    response = jsonify({'ajaxResponses': ajax_responses})
 
     return response
 

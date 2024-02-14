@@ -13,16 +13,20 @@ export const TextInput = () => {
 
   const handleSubmit = () => {
     // Effettua una richiesta POST al backend Flask
-    axios.post('http://localhost:5000/get_tables', { multiline_input: text })
+    axios.post('http://localhost:5000/get_tables', text)
       .then(response => {
         // Gestisci la risposta del server qui se necessario
-        console.log(response.data);
+        console.log(response);
       })
       .catch(error => {
         // Gestisci eventuali errori qui
         console.error('Errore durante la richiesta al server:', error);
       });
+      console.log('Data sent to server:', text);
+
   };
+
+  
 
   return (<div className='poesia-imput+bottone'>
     <div className='poesia-imput'>

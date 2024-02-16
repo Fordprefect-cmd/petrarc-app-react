@@ -1,5 +1,7 @@
 // App.js
 import { useState } from 'react';
+import  Drawer  from './components/Drawer';
+import  TabscComponent  from './components/TabscComponent';
 import TextInput from './components/TextInput';
 
 function App() {
@@ -11,6 +13,8 @@ function App() {
 
   return (
     <div>
+        <Drawer />
+        <TabscComponent />
       <TextInput onResponse={handleResponse} />
     </div>
   );

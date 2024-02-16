@@ -1,17 +1,16 @@
 
 
-.poesia-imput {
+.poesia_imput_bottone {
   display: flex;
   position: relative;
-  justify-content: left;
-  margin-top: 5%;
-  margin-left: 20%;
+  justify-content: right;
+  margin-top: 25%;
+  margin-left: 25%;
 }
 
-.bottone-invia-poesia {
-  display: flex;
-  
-  flex-direction: row;
+.bottone_invia_poesia {
+
+  flex-direction: column;
 }
 
 
@@ -20,7 +19,7 @@
   display: flex;
   position: relative; /* Ensure relative positioning */
   z-index: 25; /* Set a high z-index value */
-}
+} 
 
 .drawer-button {
   display: flex;

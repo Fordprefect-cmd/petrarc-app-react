@@ -1,41 +1,31 @@
+// TextInputWithButton.js
 import React, { useState } from 'react';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import AxiosRequest from './AxiosRequest';
 
-const TextInput = ({ onSendRequest }) => {
-  const [text, setText] = useState('');
+function TextInput({ onResponse }) {
+  const [inputText, setInputText] = useState('');
 
-  const handleChange = (event) => {
-    setText(event.target.value);
+  const handleInputChange = (event) => {
+    setInputText(event.target.value);
   };
 
-  const handleButtonClick = () => {
+  const handleSubmit = () => {
     const formData = {
-      multiline_input: text
+      multiline_input: inputText
     };
-    onSendRequest(formData); // Call the onSendRequest function with the form data
+    AxiosRequest(formData, onResponse);
+    setInputText('');
+
+
+
   };
 
   return (
-    <div className='poesia-imput+bottone'>
-      <div className='poesia-imput'>
-        <TextField
-          id="standard-multiline-flexible"
-          label=""
-          multiline
-          placeholder="Scrivi qui il tuo testo, vai a capo per un nuovo verso"
-          variant="standard"
-          style={{ width: '70%' }}
-          inputProps={{ style: { color: 'white' } }}
-          value={text}
-          onChange={handleChange}
-        />
-      </div>
-      <div className='bottone-invia-poesia'>
-        <Button variant="contained" onClick={handleButtonClick}>Invia</Button>
-      </div>
+    <div>
+      <input type="text" value={inputText} onChange={handleInputChange} />
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
-};
+}
 
 export default TextInput;

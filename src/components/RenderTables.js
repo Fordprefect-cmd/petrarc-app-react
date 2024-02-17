@@ -59,13 +59,13 @@ export const RenderTables = ({ responseData }) => {
   const [pageTable2, setPageTable2] = useState(0);
   const [rowsPerPageTable2, setRowsPerPageTable2] = useState(5);
 
-  if (!response || !response.ajaxResponses || response.ajaxResponses.length === 0) {
+  if (!responseData || !responseData.ajaxResponses || responseData.ajaxResponses.length === 0) {
     return <div>No data available</div>;
   }
 
   // Aggregate data for table1 and table2
-  const table1Data = response.ajaxResponses.map((responseData) => responseData.response.table1).flat();
-  const table2Data = response.ajaxResponses.map((responseData) => responseData.response.table2).flat();
+  const table1Data = responseData.ajaxResponses.map((responseData) => responseData.response.table1).flat();
+  const table2Data = responseData.ajaxResponses.map((responseData) => responseData.response.table2).flat();
 
   return (
     <div>

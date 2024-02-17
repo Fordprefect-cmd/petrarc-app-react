@@ -7,9 +7,6 @@ import Box from '@mui/material/Box';
 import ImputPage from './ImputPage';
 import RenderTables from './RenderTables';
 
-
-
-
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -45,10 +42,18 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
+  const [responseData, setResponseData] = React.useState(null); // Lifted state
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const handleResponse = (responseData) => {
+    console.log('responseData - BasicTabs level:', responseData);
+    setResponseData(responseData); // Update responseData state
+  };
+
+
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -61,13 +66,14 @@ export default function BasicTabs() {
       </Box>
       <CustomTabPanel value={value} index={0}>
         Item One
-        <ImputPage />
+        <ImputPage onResponse={handleResponse} /> {/* Pass onResponse as a prop */}
       </CustomTabPanel>
       
       <CustomTabPanel value={value} index={1}>
         Item Two
-
+        <RenderTables responseData={responseData} /> {/* Pass responseData as prop */}
       </CustomTabPanel>
+      
       <CustomTabPanel value={value} index={2}>
         Item Three
       </CustomTabPanel>

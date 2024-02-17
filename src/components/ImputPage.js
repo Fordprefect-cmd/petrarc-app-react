@@ -6,8 +6,9 @@ function ImputPage() {
   const [response, setResponse] = useState('');
 
   const handleResponse = (responseData) => {
-    console.log('responseData - App level:', responseData);
+    console.log('responseData', responseData);
     setResponse(responseData);
+    
   };
 
   return (

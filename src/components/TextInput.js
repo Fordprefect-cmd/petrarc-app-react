@@ -16,9 +16,6 @@ function TextInput({ onResponse }) {
       multiline_input: inputText
     };
     AxiosRequest(formData, onResponse);
-
-
-
   };
 
   return (
@@ -34,10 +31,10 @@ function TextInput({ onResponse }) {
           inputProps={{ style: { color: 'white' } }}
           value={inputText}
           onChange={handleInputChange}
-        />
+        /> 
       </div>
-      <div className='bottone_invia_poesia'>
-        <Button variant="contained" onClick={handleSubmit}>Invia</Button>
+      <div >
+        <Button className='bottone_invia_poesia' variant="contained" onClick={handleSubmit} >Invia</Button>
       </div>
     </div>
   );

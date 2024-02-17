@@ -3,12 +3,17 @@
 .poesia_imput_bottone {
   display: flex;
   position: relative;
-  justify-content: right;
-  margin-top: 25%;
-  margin-left: 25%;
+  justify-content: left;
+  margin-top: 5%;
+  margin-left: 10%;
+  flex-direction: column;
+
 }
 
 .bottone_invia_poesia {
+  display: flex;
+  width: 70%;
+
 
   flex-direction: column;
 }

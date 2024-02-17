@@ -4,6 +4,11 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import ImputPage from './ImputPage';
+import RenderTables from './RenderTables';
+
+
+
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -56,9 +61,12 @@ export default function BasicTabs() {
       </Box>
       <CustomTabPanel value={value} index={0}>
         Item One
+        <ImputPage />
       </CustomTabPanel>
+      
       <CustomTabPanel value={value} index={1}>
         Item Two
+
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         Item Three

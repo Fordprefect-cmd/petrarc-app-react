@@ -50,7 +50,7 @@ const columns2 = [
   // Add more columns as needed
 ];
 
-export const RenderTables = ({ response }) => {
+export const RenderTables = ({ responseData }) => {
   // Pagination state for table1
   const [pageTable1, setPageTable1] = useState(0);
   const [rowsPerPageTable1, setRowsPerPageTable1] = useState(5);

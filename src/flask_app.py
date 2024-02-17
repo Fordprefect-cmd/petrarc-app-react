@@ -63,7 +63,7 @@ def get_tables():
 
     data = request.json
     multiline_input = data.get('multiline_input', '')
-
+    multiline_input = multiline_input.lower()
     # Now you can process the text as needed
     # For demonstration, let's just print it
     print('Received text:', multiline_input)
@@ -256,7 +256,7 @@ def process_string(stringa_iniziale):
     # Definisco una funzione che che assegno le condizioni sineresi e dieresi alle parole che rispettano le condizioni
 
     def check_sineresi_dieresi(substringa_rima, ultima_parola):
-        # Condizione 1 - scremiamo solo le ultime 1 o 2 sillabe di ogni parola
+        # Condizione 1 - scremiamo solo le ultime 1 o 2 sillabe di ogni parola o monosillbi di vocali che non hanno
         if '-' in substringa_rima and substringa_rima.count('-') >= 2 or len(substringa_rima) == 1:
             return "false"
         

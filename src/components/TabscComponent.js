@@ -42,15 +42,9 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
-  const [responseData, setResponseData] = React.useState(null); // Lifted state
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-
-  const handleResponse = (responseData) => {
-    console.log('responseData - BasicTabs level:', responseData);
-    setResponseData(responseData); // Update responseData state
   };
 
 
@@ -66,12 +60,12 @@ export default function BasicTabs() {
       </Box>
       <CustomTabPanel value={value} index={0}>
         Item One
-        <ImputPage onResponse={handleResponse} /> {/* Pass onResponse as a prop */}
+        <ImputPage  /> {/* Pass onResponse as a prop */}
       </CustomTabPanel>
       
       <CustomTabPanel value={value} index={1}>
         Item Two
-        <RenderTables responseData={responseData} /> {/* Pass responseData as prop */}
+        <RenderTables /> {/* Pass responseData as prop */}
       </CustomTabPanel>
       
       <CustomTabPanel value={value} index={2}>

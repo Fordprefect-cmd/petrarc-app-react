@@ -39,7 +39,7 @@ const columns1 = [
     // Add more columns as needed
 ];
 
-// Define columns for table2
+// Define columns for table2 
 const columns2 = [
   { id: 'Totale_Dieresi', label: 'Totale_Dieresi', minWidth: 100 },
   { id: 'Totale_Sinalefe', label: 'Totale_Sinalefe', minWidth: 100 },

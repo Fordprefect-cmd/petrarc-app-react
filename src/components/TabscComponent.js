@@ -42,12 +42,18 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
+  const [responseData, setResponseData] = React.useState(null); // State to hold responseData
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  // Function to handle response data from child component
+  const handleChildResponse = (data) => {
+    setResponseData(data);
+    console.log('responseData from TabscComponent:', data); // Logging responseData in parent component
 
+  };
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -60,12 +66,13 @@ export default function BasicTabs() {
       </Box>
       <CustomTabPanel value={value} index={0}>
         Item One
-        <ImputPage  /> {/* Pass onResponse as a prop */}
+        {/* Pass handleChildResponse as a prop */}
+        <ImputPage onResponse={handleChildResponse} />
       </CustomTabPanel>
       
       <CustomTabPanel value={value} index={1}>
         Item Two
-        <RenderTables /> {/* Pass responseData as prop */}
+        <RenderTables responseData={responseData} /> {/* Pass responseData as prop */}
       </CustomTabPanel>
       
       <CustomTabPanel value={value} index={2}>

@@ -68,7 +68,7 @@ export const RenderTables = ({ responseData }) => {
   const table2Data = responseData.ajaxResponses.map((responseData) => responseData.response.table2).flat();
 
   return (
-    <div>
+    <div className='tabelle'>
       {/* Table 1 */}
       <Paper sx={{ width: '100%', overflow: 'hidden', marginBottom: '20px' }}>
         <TableContainer sx={{ maxHeight: 440 }}>

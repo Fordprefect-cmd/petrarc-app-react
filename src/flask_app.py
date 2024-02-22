@@ -271,7 +271,7 @@ def process_string(stringa_iniziale):
 
         # Condizione 3 - la dieresi si ha sempre nell'ultima sillaba dell'ultima parola del verso
         if '-' not in substringa_rima and len(substringa_rima) >= 2 and ultima_parola and substringa_rima[1] in italian_vowels_no_acc:
-            return "dieresi"
+            return "dieresi" # parola per testare: "costei"
 
         return "false"
 

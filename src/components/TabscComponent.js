@@ -70,7 +70,7 @@ export default function BasicTabs() {
         <ImputPage onResponse={handleChildResponse} />
       </CustomTabPanel>
       
-      <CustomTabPanel value={value} index={1}>
+      <CustomTabPanel className='tablePanel' value={value} index={1}>
         Item Two
         <RenderTables responseData={responseData} /> {/* Pass responseData as prop */}
       </CustomTabPanel>

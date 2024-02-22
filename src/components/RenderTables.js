@@ -100,7 +100,7 @@ export const RenderTables = ({ responseData }) => {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[5, 10, 100]}
           component="div"
           count={table1Data.length}
           rowsPerPage={rowsPerPageTable1}

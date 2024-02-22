@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 function AxiosRequest(formData, onResponse) {
-  axios.post('http://localhost:5000/get_tables', formData)
+  axios.post('http://petrarcapp.pythonanywhere.com/get_tables', formData)
     .then(response => {
       console.log('response.data:',response.data);
       onResponse(response.data);

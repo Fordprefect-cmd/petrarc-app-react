@@ -1,14 +1,12 @@
-// TextInputWithButton.js
+// TextInput.js
 import { useState } from 'react';
 import AxiosRequest from './AxiosRequest';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-function TextInput({ onResponse }) {
-  const [inputText, setInputText] = useState('');
-
+function TextInput({ onResponse, inputText, onInputChange }) {
   const handleInputChange = (event) => {
-    setInputText(event.target.value);
+    onInputChange(event);
   };
 
   const handleSubmit = () => {
@@ -41,6 +39,3 @@ function TextInput({ onResponse }) {
 }
 
 export default TextInput;
-
-
- 

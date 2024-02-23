@@ -1,3 +1,5 @@
+// TabscComponent.js
+
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -43,6 +45,7 @@ function a11yProps(index) {
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
   const [responseData, setResponseData] = React.useState(null); // State to hold responseData
+  const [inputText, setInputText] = React.useState(''); // State to hold input text
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -52,7 +55,10 @@ export default function BasicTabs() {
   const handleChildResponse = (data) => {
     setResponseData(data);
     console.log('responseData from TabscComponent:', data); // Logging responseData in parent component
+  };
 
+  const handleInputChange = (event) => {
+    setInputText(event.target.value);
   };
 
   return (
@@ -66,8 +72,8 @@ export default function BasicTabs() {
       </Box>
       <CustomTabPanel value={value} index={0}>
         Item One
-        {/* Pass handleChildResponse as a prop */}
-        <ImputPage onResponse={handleChildResponse} />
+        {/* Pass handleChildResponse and inputText as props */}
+        <ImputPage onResponse={handleChildResponse} inputText={inputText} onInputChange={handleInputChange} />
       </CustomTabPanel>
       
       <CustomTabPanel className='tablePanel' value={value} index={1}>

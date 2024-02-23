@@ -1,6 +1,8 @@
+// ImputPage.js 
+
 import TextInput from './TextInput';
 
-function ImputPage({ onResponse }) {
+function ImputPage({ onResponse, inputText, onInputChange }) {
   
   const handleResponse = (responseData) => {
     console.log('responseData', responseData);
@@ -9,7 +11,7 @@ function ImputPage({ onResponse }) {
 
   return (
     <div>
-      <TextInput onResponse={handleResponse} />
+      <TextInput onResponse={handleResponse} inputText={inputText} onInputChange={onInputChange} />
     </div>
   );
 }

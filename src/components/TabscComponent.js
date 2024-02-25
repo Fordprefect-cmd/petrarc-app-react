@@ -56,11 +56,11 @@ export default function BasicTabs() {
     setResponseData(data);
     console.log('responseData from TabscComponent:', data); // Logging responseData in parent component
   };
-
+/*
   const handleInputChange = (event) => {
     setInputText(event.target.value);
-  };
-
+  }; 
+*/
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -72,8 +72,9 @@ export default function BasicTabs() {
       </Box>
       <CustomTabPanel value={value} index={0}>
         Item One
-        {/* Pass handleChildResponse and inputText as props */}
-        <ImputPage onResponse={handleChildResponse} inputText={inputText} onInputChange={handleInputChange} />
+        {/* Pass handleChildResponse and inputText as props */} 
+        <ImputPage onResponse={handleChildResponse} inputText={inputText}/>   {/* onInputChange={handleInputChange} */} 
+         
       </CustomTabPanel>
       
       <CustomTabPanel className='tablePanel' value={value} index={1}>

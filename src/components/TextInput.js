@@ -1,34 +1,33 @@
-// TextInput.js
-
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AxiosRequest from './AxiosRequest';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Quill from 'quill'; // Import Quill
+import 'quill/dist/quill.snow.css'; // Import Quill styles
 
 function TextInput({ onResponse, axiosdata, inputText, onInputChange, responseData }) {
+  const [quill, setQuill] = useState(null); // State to hold the Quill instance
+  const [formattedText, setFormattedText] = useState(); // State to hold the formatted text
 
-  
-  const handleInputChange = (event) => {
+  const handleInputChange = async  (delta, oldDelta, source) => {
+    if (source === 'user' && quill)  {
+      const text = await quill.getText();
+      const formattedText = text.trim(); // Trim extra whitespace
+      console.log('Formatted Text: in handle iputchange', formattedText);
+      setFormattedText(formattedText); // Update the formattedText state
 
-    onInputChange(event);
+      onInputChange(formattedText);
+    }
   };
 
-  const AxiosRequestHandler = async () => {
-    
-  }
+  const handleSubmit = () => {
+    const text = quill.getText();
 
-  const handleSubmit =  () => {
     const formData = {
-      multiline_input: inputText
-    };
-    
-  AxiosRequest(formData, onResponse);
-   
-    
-    //formatText(response)
-
+      multiline_input: text   //assegna qua formattedText content
+     };
+     console.log("formData in handlesubmit:", formData )
+    AxiosRequest(formData, onResponse);
   };
-
 
   const handleSubmitHighlight = () => {
     console.log('responseHighlight:', axiosdata);
@@ -58,38 +57,47 @@ console.log('Words with Trovata === true:', trovataTrueWords);
     
   }
 
-  // Function to split input text into words and apply CSS classes
-  const formatText = (inputText) => {
-    console.log(inputText);
+  // Initialize Quill when component mounts
+  useEffect(() => {
+    console.log("useEffect called");
+    if (!quill) {
+      console.log("Initializing Quill");
+      const editor = new Quill('#editor', {
+        theme: 'snow', // or 'bubble'
+      });
+      editor.on('text-change', handleInputChange);
+      setQuill(editor);
+    }
+  }, [quill, handleInputChange]);
 
-   // return inputText.split(' ').map((word, index) => (
-    //  <span key={index} className={highlightWords}>
-    //    {word}{' '}
-   //   </span>
-  //  ));
-  };
+  // Effect to attach event listener after Quill initialization
+useEffect(() => {
+  if (quill) {
+    const handler = (delta, oldDelta, source) => {
+      if (source === 'user') {
+        const text = quill.getText();
+        const formattedText = text.trim(); // Trim extra whitespace
+        console.log('Formatted Text:', formattedText);
+        //onInputChange(formattedText);
+      }
+    };
+
+    quill.on('text-change', handler);
+
+    // Cleanup function to remove event listener when component unmounts
+    return () => {
+      quill.off('text-change', handler);
+    };
+  }
+}, [quill]);
 
   return (
     <div className='poesia_imput_bottone'>
-      <div className='poesia-imput'>
-        <TextField
-          id="standard-multiline-flexible"
-          label=""
-          multiline
-          placeholder="Scrivi qui il tuo testo, vai a capo per un nuovo verso"
-          variant="standard"
-          style={{ width: '70%' }}
-          inputProps={{ style: { color: 'white' } }}
-          value={inputText}
-          onChange={handleInputChange}
-        />
-      </div>
+      <div id="editor" className='poesia-imput'></div>
       <div>
         <Button className='bottone_invia_poesia' variant="contained" onClick={handleSubmit}>Invia</Button>
         <Button className='bottone_invia_highlight' variant="contained" onClick={handleSubmitHighlight}>highlight</Button>
-  
-      
-    </div>
+      </div>
     </div>
   );
 }

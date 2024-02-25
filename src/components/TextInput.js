@@ -29,25 +29,32 @@ function TextInput({ onResponse, axiosdata, inputText, onInputChange, responseDa
 
   };
 
-  // Function to add CSS class to words based on "Trovata" column in responseData
-  const highlightWords = (word) => {
-    if (responseData) {
-      for (const response of responseData) {
-        for (const table of response.response.table1) {
-          if (table.Trovata && table.Parola === word) {
-            console.log(word)
-            return 'highlighted-word';
-          }
-        }
-      }
-    }
-    return '';
-  };
 
   const handleSubmitHighlight = () => {
-    
     console.log('responseHighlight:', axiosdata);
+    const table1Data = [];
+    const table2Data = [];
+
+    // Extract data for Table 1
+    axiosdata.ajaxResponses.forEach(response => {
+              response.response.table1.forEach(row => {
+                  table1Data.push(row);
+              });
+          });
+  
+          // Extract data for Table 2
+          axiosdata.ajaxResponses.forEach(response => {
+              response.response.table2.forEach(row => {
+                  table2Data.push(row);
+              });
+          });
+  
+    console.log('TabelleHighlight:', table1Data, table2Data);
     
+        // Filter words with Trovata === true
+        const trovataTrueWords = table1Data.filter(row => row.Trovata === true)
+        .map(row => row.Parola);
+console.log('Words with Trovata === true:', trovataTrueWords);
     
   }
 

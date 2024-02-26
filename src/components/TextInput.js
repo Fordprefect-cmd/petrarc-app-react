@@ -74,8 +74,8 @@ function TextInput({ onResponse, axiosdata}) {
 
   return (
     <div className='poesia_imput_bottone'>
-      <div id="editor" className='poesia-imput' contentEditable={true}></div>
-      <div>
+      <div id="editor" className='poesia-imput' contentEditable={true}  data-placeholder="Scrivi qui il tuo testo..."></div>
+      <div className='bottoni_insieme'>
         <Button className='bottone_invia_poesia' variant="contained" onClick={handleSubmit}>Invia</Button>
         <Button className='bottone_invia_highlight' variant="contained" onClick={handleSubmitHighlight}>highlight</Button>
       </div>

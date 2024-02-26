@@ -15,7 +15,12 @@ function ImputPage({ onResponse, inputText, onInputChange }) {
 
   return (
     <div>
-      <TextInput onResponse={handleResponse} axiosdata={responseData} inputText={inputText} onInputChange={onInputChange} />
+<TextInput 
+  onResponse={handleResponse}
+  axiosdata={responseData} 
+  inputText={inputText} 
+  onInputChange={onInputChange} // Ensure this function is passed correctly
+/>
     </div>
   );
 }

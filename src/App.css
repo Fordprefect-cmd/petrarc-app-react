@@ -20,6 +20,10 @@
   flex-direction: column;
 }
 
+.ql-editor .myCustomBackground {
+  background-color: yellow;
+}
+
 .tabelle {
   display: flex;
   flex-direction: column;

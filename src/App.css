@@ -1,9 +1,7 @@
 
 
 .poesia_imput_bottone {
-  display: flex;
   position: relative;
-  justify-content: left;
   width: 100%;
   margin-top: 15%;
   
@@ -13,9 +11,8 @@
 }
 
 .poesia-imput {
-  display: flex;
   width: 100%;
-  padding-bottom:50%;
+  
 
   
 }

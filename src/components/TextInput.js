@@ -4,12 +4,12 @@ import Button from '@mui/material/Button';
 
 function TextInput({ onResponse, axiosdata}) {
   const [content, setContent] = useState(''); // State to hold the content of the content editable div
+  const [highlightWords, setHighlightWords] = useState([]);
 
   const handleInputChange = (event) => {
     const text = event.target.innerText;
     setContent(text);
   };
-  
 
   const handleSubmit = () => {
     const formData = {
@@ -18,7 +18,6 @@ function TextInput({ onResponse, axiosdata}) {
     console.log("testo inviato:",content)
     AxiosRequest(formData, onResponse);
   };
-
 
   const handleSubmitHighlight = () => {
     console.log('responseHighlight:', axiosdata);
@@ -46,9 +45,8 @@ function TextInput({ onResponse, axiosdata}) {
     .map(row => row.Parola);
     console.log('Words with Trovata === true:', trovataTrueWords);
 
-
+    setHighlightWords(trovataTrueWords);
   }
-
 
   useEffect(() => {
     const editor = document.getElementById('editor');
@@ -57,6 +55,22 @@ function TextInput({ onResponse, axiosdata}) {
       editor.removeEventListener('input', handleInputChange);
     };
   }, []);
+
+  useEffect(() => {
+    const editor = document.getElementById('editor');
+    let text = editor.innerText;
+
+    // Reset the innerHTML
+    editor.innerHTML = text;
+
+    // Highlight the words
+    highlightWords.forEach(word => {
+      const regex = new RegExp(`\\b${word}\\b`, 'gi');
+      text = text.replace(regex, `<span style="background-color: yellow;">${word}</span>`);
+    });
+
+    editor.innerHTML = text;
+  }, [highlightWords]);
 
   return (
     <div className='poesia_imput_bottone'>
@@ -70,4 +84,3 @@ function TextInput({ onResponse, axiosdata}) {
 }
 
 export default TextInput;
-

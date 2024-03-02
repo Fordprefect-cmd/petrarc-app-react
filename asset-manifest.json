@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/petrarc-app-react/static/css/main.2e22495c.css",
+    "main.js": "/petrarc-app-react/static/js/main.56123236.js",
+    "static/js/592.f0fbd660.chunk.js": "/petrarc-app-react/static/js/592.f0fbd660.chunk.js",
+    "index.html": "/petrarc-app-react/index.html",
+    "main.2e22495c.css.map": "/petrarc-app-react/static/css/main.2e22495c.css.map",
+    "main.56123236.js.map": "/petrarc-app-react/static/js/main.56123236.js.map",
+    "592.f0fbd660.chunk.js.map": "/petrarc-app-react/static/js/592.f0fbd660.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2e22495c.css",
+    "static/js/main.56123236.js"
+  ]
+}

@@ -71,7 +71,9 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        
+        1) Scrivi una o più righe di testo andando a capo,  
+        2) clicca sul pulsante "Invia" e attendi che il pulsante "highlight" si illumini (tabelle colonna "trovata").
+        3) controlla il risultato del server nella tab "Tabelle" 
         {/* Pass handleChildResponse and inputText as props */} 
         <ImputPage onResponse={handleChildResponse} inputText={inputText}/>   {/* onInputChange={handleInputChange} */} 
          

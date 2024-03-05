@@ -71,7 +71,7 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        
+         
         {/* Pass handleChildResponse and inputText as props */} 
         <ImputPage onResponse={handleChildResponse} inputText={inputText}/>   {/* onInputChange={handleInputChange} */} 
          

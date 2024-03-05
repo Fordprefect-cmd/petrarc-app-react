@@ -1,22 +1,14 @@
 
 '''
-#ANCHOR - trova il modo di disegnare o schematizzare quello che succede nel tuo codice.
+#ANCHOR 
+bug e miglioramenti:
+- Da aggiornare conteggio indici per includere monosillabi atoni => hai già assegnato il conto partendo da 1 qui, puoi usare "0" come simbolo per sillabe atone (il lo la il gli le ti ecc)
+- migliorare funzione trova_sillabe_con_vocali_accentate, esempi bad output:
+-- " tànto ì à è ò " =>  "1, 2, 3, 3, 4, 4, 4, 5, 5, 5" (indici duplicati)
+-- " aeio ui ia" => "1, 3, 4" (essendo tutte vocali output doveva essere solo "1") 
 
-Per adesso prendi e ristrottura la data structure con tutto quello che ti servirà.
+- Da aggiungere modalità per assonanza oltre che per rima
 
-- Ocio monosillabi atoni => hai già assegnato il conto partendo da 1 qui, puoi usare "0" come simbolo per no accento (post UI che funziona)
-- Ocio aggiungi modalità per assonanza eventualmente
-
-- occhio per far andare questo file devi essere dentro la cartella petrarc_app_react/src,
-- metre npm start lo devi fare nella cartella petrarc_app_react
-- + avere attivo entrambi il flask e react servers.
-
-- Fai file doc di corrispondenza/spiegazione valori tabella + funzioni + corrispondenza metrica italiana + UI
-- x doc: di fatto devono trovare/implementare una soluzione al matching con le parole del dizionario
-in generale, questo riassume gli apostrofi, numeri, plurali e singolari che ho già volendo e usare 
-quelli per sillabare maybe. 
-- x doc: devi anche spiegare i nomi delle variabili, tutto il processo e il passaggio "parole in parola" tipo
-quindi il doc è diviso in 2, la spiegaz della teoria e del python, e la spiegaz della UI in relaz con la tabella python
 '''
 
 
@@ -56,16 +48,14 @@ consonanti_italiane = ['b', 'c', 'd', 'f', 'g', 'h', 'l', 'm', 'n', 'p', 'q', 'r
 @app.route('/')
 
 def index():
-    return "Server is running"  # Non è più necessario rendere una pagina HTML se clicchi al link vedi questo
-
+    return "Server is running"  
 @app.route('/get_tables', methods=['POST'])
 def get_tables():
 
     data = request.json
     multiline_input = data.get('multiline_input', '')
     multiline_input = multiline_input.lower()
-    # Now you can process the text as needed
-    # For demonstration, let's just print it
+
     print('Received text:', multiline_input)
 
 
@@ -141,8 +131,12 @@ def process_string(stringa_iniziale):
         return sillabazione
 
     # Definisco una funzione per la Sinalefe
+    '''
+    Si verifica tra una parola e la successiva, 
+    se la parola finisce per vocale e quella successiva inizia per vocale
+    '''
     def Sinalefe(parole_da_cercare):
-        entries_sinalefe = []  # Inizializza la lista delle entries_sinalefe qui
+        entries_sinalefe = []  
 
         for i in range(len(parole_da_cercare) - 1):
             if parole_da_cercare[i][-1] in italian_vowels and parole_da_cercare[i + 1][0] in italian_vowels:
@@ -150,7 +144,7 @@ def process_string(stringa_iniziale):
             else:
                 entries_sinalefe.append(False)
 
-        # Aggiungo False per l'ultima parola nella lista
+        # Aggiungo False per l'ultima parola nella lista perchè non è seguita da nessuno
         entries_sinalefe.append(False)
 
         return entries_sinalefe  # Ritorna la lista delle entries_sinalefe Sinalefe
@@ -226,8 +220,8 @@ def process_string(stringa_iniziale):
             if regex_vocali_accentate.search(sillaba):
                 indici_sillabe_accentate.append(i)
 
-# Le seguenti condizioni servono a scalare in avanti o indietro le posizioni degli indici delle sillabe
-# accentate nel verso in base alla presenza delle sinalefe/dieresi/sineresi, le quali fondono (o dividono) 2 sillabe in 1
+    # Le seguenti condizioni servono a scalare in avanti o indietro le posizioni degli indici delle sillabe
+    # accentate nel verso in base alla presenza delle sinalefe/dieresi/sineresi, le quali fondono (o dividono) 2 sillabe in 1
 
         # Condizione 1
         for index in range(len(df['Sillabazione'])):

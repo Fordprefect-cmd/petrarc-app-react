@@ -71,7 +71,8 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-         
+         premi invio dopo aver scritto il testo, quando il bottone "highlight"
+diventa disponibile puoi cliccare sulla tab "tabelle" per vedere il risultato, il bottone "highlight" fa riferimenot ai valori true della colonna "trovata"
         {/* Pass handleChildResponse and inputText as props */} 
         <ImputPage onResponse={handleChildResponse} inputText={inputText}/>   {/* onInputChange={handleInputChange} */} 
          

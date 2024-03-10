@@ -7,6 +7,7 @@ Le regole della metrica necessarie per descrivere un testo sono programmate nell
 1)	L’unita minima di base in cui dividere il testo da analizzare è la SILLABA, che si ottiene spezzando ciascuna parola (notare a proposito questi articoli https://accademiadellacrusca.it/it/consulenza/divisione-in-sillabe/302).
 2)	Quali sillabe in ogni parola contengono o meno una vocale accentata (detta tonica).
 3)	Quanto è lungo il verso (una riga di testo) in sillabe, e come calcolare questo numero. 
+  
 Il programma si occupa di ricavare e tenere traccia di questi elementi per descrivere accuratamente la ritmica e musicalità del testo attraverso un’interfaccia simile a quella delle IDE. 
 Segue un breve schema dell’ordine cronologico delle operazioni che il programma python svolge sul testo, per una spiegazione dettagliata del codice fare riferimento al file Flask_app.py nella repository, questo file è una copia offline di quello a cui fa riferimeno l’app flask per la server request, contiene tutte le funzioni citate di seguito.
 Schema Ordine di popolamento delle colonne – Tabella df_Principale

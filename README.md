@@ -6,7 +6,9 @@ Al momento il programma consiste nel codice python che attraverso una rudimental
 Le regole della metrica necessarie per descrivere un testo sono programmate nella funzione process_string.     La quale fa uso di 3 concetti fondamentali per eseguire tutte le operazioni di analisi metriche (https://github.com/Fordprefect-cmd/petrarc-app-react/blob/2c2d0ecc0038c0f4e97edbd6fd2294aab864f463/La%20metrica%20italiana%20(Pietro%20G.%20Beltrami)%20(Z-Library)-pages-2.pdf).
 1)	L’unita minima di base in cui dividere il testo da analizzare è la SILLABA, che si ottiene spezzando ciascuna parola (notare a proposito questi articoli https://accademiadellacrusca.it/it/consulenza/divisione-in-sillabe/302).
 2)	Quali sillabe in ogni parola contengono o meno una vocale accentata (detta tonica).
-3)	Quanto è lungo il verso (una riga di testo) in sillabe, e come calcolare questo numero. 
+3)	Quanto è lungo il verso (una riga di testo) in sillabe, e come calcolare questo numero.
+
+  ### Per realizzare quanto detto al punto 3), è stato realizzato un database di parole italiane con sillabazione e accento, il primo di questo tipo per la lingua italiana pubblicamente disponibile, salvato sotto "df_cleaned (1).csv" nella cartella "src". 
   
 Il programma si occupa di ricavare e tenere traccia di questi elementi per descrivere accuratamente la ritmica e musicalità del testo attraverso un’interfaccia simile a quella delle IDE. 
 Segue un breve schema dell’ordine cronologico delle operazioni che il programma python svolge sul testo, per una spiegazione dettagliata del codice fare riferimento al file Flask_app.py nella repository, questo file è una copia offline di quello a cui fa riferimeno l’app flask per la server request, contiene tutte le funzioni citate di seguito.
